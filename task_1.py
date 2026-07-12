@@ -31,7 +31,7 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
         self.__name_items.append(name)
         self.__number_items += 1
 
-       # Создаем метод для удаления товара из чека. 
+        # Создаем метод для удаления товара из чека. 
     def delete_item_from_check(self, name):
         # Проверяем, есть ли товар в самом чеке.
         if name not in self.__name_items:
@@ -40,8 +40,20 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
         self.__name_items.remove(name)
         self.number_items -=  1
 
+        # Создаем метод для подсчета общей стоимости покупок.
+    def check_amount(self):
+        total = []
+        # Собираем цены всех товаров, которые лежат в чеке.
+        for item in self.__name_item:
+            total.append(self.__item_price[item])
+        # Считаем сумму списка цен.
+        total_sum = sum(total)
 
-
+        # Проверяем условие скидки (больше 10 товаров в чеке)
+        if len(self.__name_items) > 10:
+            return  total_sum * 0.9
+        
+        return total_sum
 
 
 
