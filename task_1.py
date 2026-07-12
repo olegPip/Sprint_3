@@ -18,3 +18,84 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
     @property
     def number_items(self):
         return self.__number_items
+    
+     # Метод для добавления товара в чек.
+    def add_item_to_cheque(self, name):
+        # Проверяем длину названия товара.
+        if len(name) == 0 or len(name) > 40: 
+            raise ValueError('Нельзя добавить товар, если в его названии нет символов или их больше 40')  
+        # Проверяем наличие товара в справочнике цен.
+        if name not in self.__item_price:
+            raise NameError('Позиция отсутствует в товарном справочнике') 
+        # В остальных случаях добавляем товар в name_items и увеличивает значение number_items на 1.
+        self.__name_items.append(name)
+        self.__number_items += 1
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
