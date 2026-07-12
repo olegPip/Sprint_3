@@ -31,9 +31,14 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
         self.__name_items.append(name)
         self.__number_items += 1
 
-        
-
-
+       # Создаем метод для удаления товара из чека. 
+    def delete_item_from_check(self, name):
+        # Проверяем, есть ли товар в самом чеке.
+        if name not in self.__name_items:
+            raise NameError('Позиция отсутствует в чеке')       
+        # Удаляем товар и уменьшаем счётчик на 1.
+        self.__name_items.remove(name)
+        self.number_items -=  1
 
 
 
