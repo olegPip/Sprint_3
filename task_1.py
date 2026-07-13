@@ -99,3 +99,17 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
     # Создаем метод для расчета общей суммы НДС.
     def total_tax(self):
         return self.twenty_percent_tax_calculation() + self.ten_percent_tax_calculation()
+
+    # Создали метод для получения номера телефона покупателя.
+    @staticmethod
+    def get_telephone_number(telephone_number):
+        # Проверяем, являетс ли аргумент целым числом.
+        if type(telephone_number) is not int:
+            raise ValueError('Необходимо ввести цифры')
+
+        # Проверяем длину номера телефона.
+        if len(str(telephone_number)) != 10:
+            raise ValueError('Необходимо ввести 10 цифр после "+7"')
+        
+        # Возвращаем полный номер телефона. 
+        return f'+7{telephone_number}'  
