@@ -31,7 +31,7 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
         self.__name_items.append(name)
         self.__number_items += 1
 
-        # Создаем метод для удаления товара из чека. 
+    # Создаем метод для удаления товара из чека. 
     def delete_item_from_check(self, name):
         # Проверяем, есть ли товар в самом чеке.
         if name not in self.__name_items:
@@ -40,7 +40,7 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
         self.__name_items.remove(name)
         self.number_items -=  1
 
-        # Создаем метод для подсчета общей стоимости покупок.
+    # Создаем метод для подсчета общей стоимости покупок.
     def check_amount(self):
         total = []
         # Собираем цены всех товаров, которые лежат в чеке.
@@ -55,8 +55,8 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
         
         return total_sum
 
-       # Создаем метод для рассчета НДС товаров, у которых ставка 20%.
-       # Метод для вычисления НДС 20%.
+    # Создаем метод для рассчета НДС товаров, у которых ставка 20%.
+    # Метод для вычисления НДС 20%.
     def twenty_percent_tax_calculation(self):
         twenty_percent_tax = []
         # Фильтруем товар со ставкой 20%.
@@ -76,15 +76,24 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
             return tax_sum * 0.9
         return tax_sum
 
+    # Создаем метод для рассчета НДС товаров, у которых ставка 10%.
+    def ten_percent_tax_calculation(self):
+        ten_percent_tax = []
+        # Фильтруем товар со ставкой 10%.
+        for item in self.__name_items:
+            if self.__tax_rate[item] == 10:
+                ten_percent_tax.append(item)
 
+        total = []
+        # Находим цены для отрицательных товаров.
+        for item in ten_percent_tax:
+            total.append(self.__item_price[item])
+        # Считаем базовую стоимость НДС (стоимость товаров * 0.1).
+        tax_sum = sum(total) * 0.1
 
-
-
-
-
-
-
-
-
+        # Если товаров в чеке больше 10, уменьшаем сумму НДС на 10% скидки.  
+        if len(self.__name_items) > 10:
+            return tax_sum * 0.9
+        return tax_sum
 
 
