@@ -49,60 +49,32 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
         # Считаем сумму списка цен.
         total_sum = sum(total)
 
-        # Проверяем условие скидки (больше 10 товаров в чеке)
+        # Проверяем условие скидки (больше 10 товаров в чеке).
         if len(self.__name_items) > 10:
             return  total_sum * 0.9
         
         return total_sum
 
+       # Создаем метод для рассчета НДС товаров, у которых ставка 20%.
+       # Метод для вычисления НДС 20%.
+    def twenty_percent_tax_calculation(self):
+        twenty_percent_tax = []
+        # Фильтруем товар со ставкой 20%.
+        for item in self.__name_items:
+            if self.__tax_rate[item]  == 20:
+                twenty_percent_tax.append(item)
 
+        total = []
+        # Находим цены для отфильтрованых товаров.
+        for item in twenty_percent_tax:
+            total.append(self.__item_price[item])
+        # Считаем базовую сумму НДС (стоимость товаров * 0.2).
+        tax_sum = sum(total) * 0.2
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        # Если товаров в чеке больше 10, уменьшаем сумму НДС на 10% скидки. 
+        if len(self.__name_items) > 10:
+            return tax_sum * 0.9
+        return tax_sum
 
 
 
