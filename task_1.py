@@ -96,4 +96,6 @@ class OnlineSalesRegisterCollector: # Создан класс для работ�
             return tax_sum * 0.9
         return tax_sum
 
-
+    # Создаем метод для расчета общей суммы НДС.
+    def total_tax(self):
+        return self.twenty_percent_tax_calculation() + self.ten_percent_tax_calculation()
